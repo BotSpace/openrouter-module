@@ -1,0 +1,27 @@
+apiVersion: botmother.module/v1
+
+module:
+  id: openrouter
+  name: OpenRouter
+  version: 0.1.0
+  description: OpenRouter orqali 300+ LLM modeliga yagona API bilan murojaat (OpenAI, Anthropic, Google, Meta...).
+  author: yourname
+  icon: brain-circuit
+
+source:
+  github: https://github.com/BotSpace/openrouter-module
+
+runtime:
+  dockerfile: Dockerfile
+  port: 8100
+  healthcheck: /health
+
+contract:
+  jsonrpc: "2.0"
+  endpoint: /rpc
+  methods: [describe, node.execute, trigger.match, docs]
+
+provides:
+  nodes:
+    - type: openrouter.Chat
+      trigger: false

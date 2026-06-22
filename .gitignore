@@ -1,0 +1,4 @@
+*.exe
+/openrouter
+bin/
+.DS_Store
