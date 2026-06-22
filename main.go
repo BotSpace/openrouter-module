@@ -38,7 +38,7 @@ func main() {
 		Category:    "ai",
 		Icon:        "brain-circuit",
 		Color:       "ai-violet",
-		Width:       300,
+		Width:       200,
 		Content: []botmodule.Field{
 			{
 				Type:           "credential",
