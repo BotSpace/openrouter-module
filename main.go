@@ -31,6 +31,26 @@ func main() {
 	m.Version = "0.1.0"
 	m.Docs = docs
 
+	// Modul o'z credential turini e'lon qiladi — foydalanuvchi shu turdan
+	// OpenRouter API key kiritadi. Key {slug}.* namespace bilan (platforma talabi).
+	m.AddCredentialType(botmodule.CredentialType{
+		Key:   "openrouter.apikey",
+		Label: "OpenRouter API",
+		Icon:  "brain-circuit",
+		Color: "#6467F2",
+		Mode:  "apikey",
+		Fields: []botmodule.CredentialField{
+			{
+				Name:        "api_key",
+				Label:       "API Key",
+				Type:        "password",
+				Required:    true,
+				Secret:      true,
+				Placeholder: "sk-or-...",
+			},
+		},
+	})
+
 	m.AddNode(botmodule.Node{
 		Type:        "openrouter.Chat",
 		Title:       "OpenRouter Chat",
@@ -44,7 +64,7 @@ func main() {
 				Type:           "credential",
 				Key:            "api_credential",
 				Label:          "OpenRouter API key",
-				CredentialType: "openrouter",
+				CredentialType: "openrouter.apikey",
 				HelpText:       "https://openrouter.ai/keys dan oling",
 			},
 			{
